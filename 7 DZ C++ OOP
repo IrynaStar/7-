@@ -1,0 +1,163 @@
+#include <iostream>
+#include <windows.h>
+#include <string>
+using namespace std;
+
+class TV_izgotovitel
+{
+public:
+	string brand;
+	string country;
+};
+bool operator < (const TV_izgotovitel& left, const TV_izgotovitel& right) {
+	if (left.brand < right.brand) return true;
+	else return false;
+}
+bool operator > (const TV_izgotovitel& left, const TV_izgotovitel& right) {
+	if (left.country > right.country) return true;
+	else return false;
+}
+
+istream& operator >> (istream& cin, TV_izgotovitel& c) {
+	cout << "Welcome!\n";
+	cout << "Please, enter value for TV_izgotovitel brand: ";
+	cin >> c.brand;
+	cout << "Please, enter value for TV_izgotovitel country: ";
+	cin >> c.country;
+	return cin;
+}
+
+ostream& operator << (ostream& cout, const TV_izgotovitel& c) {
+	cout << "\n================================\n";
+	cout << "TV_izgotovitel:\n";
+	cout << "Brand: " << c.brand << "\n";
+	cout << "Country: " << c.country << "\n";
+	cout << "\n================================\n\n";
+	return cout;
+}
+
+class TV_about
+{
+public:
+	string model;
+	string color;
+	string version;
+	double rating;
+
+	void about() {
+		cout << "Модель: " << model << "\n"
+			<< "Цвет: " << color << "\n" << "Версия: " << version
+			<< "\n" << "Рейтинг: " << rating << "\n";
+	}
+};
+
+class TV_ekran {
+public:
+	int diagonal;
+	string type;
+};
+bool operator < (const TV_ekran& left, const TV_ekran& right) {
+	if (left.diagonal < right.diagonal) return true;
+	else return false;
+}
+bool operator > (const TV_ekran& left, const TV_ekran& right) {
+	if (left.type > right.type) return true;
+	else return false;
+}
+
+istream& operator >> (istream& cin, TV_ekran& c) {
+	cout << "Welcome!\n";
+	cout << "Please, enter value for TV_ekran diagonal: ";
+	cin >> c.diagonal;
+	cout << "Please, enter value for TV_ekran type: ";
+	cin >> c.type;
+	return cin;
+}
+
+ostream& operator << (ostream& cout, const TV_ekran& c) {
+	cout << "\n================================\n";
+	cout << "TV_ekran:\n";
+	cout << "Diagonal: " << c.diagonal << "\n";
+	cout << "Type: " << c.type << "\n";
+	cout << "\n================================\n\n";
+	return cout;
+}
+class TV_productivnost {
+
+public:
+	double OZP;
+	int memory;
+};
+bool operator < (const TV_productivnost& left, const TV_productivnost& right) {
+	if (left.OZP < right.OZP) return true;
+	else return false;
+}
+bool operator > (const TV_productivnost& left, const TV_productivnost& right) {
+	if (left.memory > right.memory) return true;
+	else return false;
+}
+
+istream& operator >> (istream& cin, TV_productivnost& c) {
+	cout << "Welcome!\n";
+	cout << "Please, enter value for TV_productivnostn OZP: ";
+	cin >> c.OZP;
+	cout << "Please, enter value for TV_productivnost memory: ";
+	cin >> c.memory;
+	return cin;
+}
+
+ostream& operator << (ostream& cout, const TV_productivnost& c) {
+	cout << "\n================================\n";
+	cout << "TV_productivnost:\n";
+	cout << "OZP: " << c.OZP << "\n";
+	cout << "Memory: " << c.memory << "\n";
+	cout << "\n================================\n\n";
+	return cout;
+}
+
+class TV_stoimost {
+
+public:
+	double price;
+	double discount;
+	double rassrochka;
+
+	void stoimost()
+	{
+		cout << "Цена без скидки: " << price << " грн\n" << "Цена со скидкой: " << discount << " грн\n"
+			<< "Платеж в месяц (в рассрочку): " << rassrochka << " грн\n";
+	}
+};
+
+int main()
+{
+	setlocale(0, "");
+
+	TV_izgotovitel c;
+	TV_izgotovitel d;
+	cin >> c >> d;
+	cout << c << d;
+
+	TV_ekran a;
+	TV_ekran b;
+	cin >> a >> b;
+	cout << a << b;
+
+	TV_productivnost e;
+	TV_productivnost f;
+	cin >> e >> f;
+	cout << e << f;
+
+	TV_about h;
+	h.model = "A2 32";
+	h.color = "Black";
+	h.version = "Android 10";
+	h.rating = 4.7;
+	h.about();
+
+	TV_stoimost s;
+	s.price = 7999;
+	s.discount = 7499;
+	s.rassrochka = 1200;
+	s.stoimost();
+}
